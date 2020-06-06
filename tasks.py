@@ -11,14 +11,19 @@ REPO = "https://github.com/obuchel/classification"
 def reset_dir():
     os.chdir(ROOT_DIR)
 
-
 @task
+def copy_index(c):
+    """Copy the top-level index file to the site."""
+    site = BUILD_DIR / 'site'
+    shutil.copy("source/index.html", site)
+
+@task(post=[copy_index])
 def copy_us_counties(c):
     reset_dir()
     site = BUILD_DIR / 'site/us-counties'
-    repos = BUILD_DIR / 'repos/classification'
+    repo = BUILD_DIR / 'repos/classification'
     site.mkdir(parents=True, exist_ok=True)
-    c.run(f"rsync -a {repos}/output {site}")
+    c.run(f"rsync -a {repo}/output {site}")
     files = [
         # HTML pages
         'classification_map.html', 'classification_map2.html',
@@ -29,7 +34,7 @@ def copy_us_counties(c):
         # geo data
         'counties5.json', 'states5.json', ]
     for file in files:
-        shutil.copy(repos / file, site)
+        shutil.copy(repo / file, site)
     shutil.copy("source/us-counties/index.html", site)
 
 
