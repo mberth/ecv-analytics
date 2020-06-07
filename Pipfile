@@ -11,6 +11,8 @@ pandas = "*"
 ansible = "*"
 boto3 = "*"
 invoke = "*"
+beautifulsoup4 = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.7"
