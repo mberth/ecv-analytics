@@ -1,7 +1,9 @@
+import re
 import sys
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+
 
 WIKIPEDIA = 'https://en.wikipedia.org'
 COVID_PANDEMIC_URL = '%s/w/index.php?title=COVID-19_pandemic_in_{}' % WIKIPEDIA
@@ -41,6 +43,14 @@ def extract_recovered(url):
     return extract_recovered_from_html(page.text, url=url)
 
 
+def cleanup_number(text):
+    parts = re.split(r"[^0-9,]", text)
+    digits = parts[0].replace(",", "")
+    if digits == '':
+        return None
+    return int(digits)
+
+
 def extract_recovered_from_html(text, url=None):
     if 'Recovered' not in text:
         # Some older versions
@@ -56,7 +66,7 @@ def extract_recovered_from_html(text, url=None):
         # print('Recovered not found for ' + url)
         # print(table)
         return None
-    return int(value.split()[0])
+    return cleanup_number(value)
 
 
 def time_series_recovered(wiki_name, name=None, iso_code=None, limit=5):
