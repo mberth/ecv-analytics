@@ -38,10 +38,14 @@ def extract_recovered(url):
     page = requests.get(url)
     if page.status_code != 200:
         return None
-    if 'Recovered' not in page.text:
+    return extract_recovered_from_html(page.text, url=url)
+
+
+def extract_recovered_from_html(text, url=None):
+    if 'Recovered' not in text:
         # Some older versions
         return None
-    tables = pd.read_html(page.text, attrs={'class': 'infobox'})
+    tables = pd.read_html(text, attrs={'class': 'infobox'})
     if len(tables) != 1:
         print(f"Warning: taking the first infobox at {url}.")
     table = tables[0]
