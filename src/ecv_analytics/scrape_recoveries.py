@@ -88,14 +88,3 @@ def time_series_recovered(wiki_name, name=None, iso_code=None, limit=5):
     versions.insert(len(versions.columns) - 1, 'href', versions.pop('href'))
     versions.rename(columns={'href': 'Source'})
     return versions
-
-if __name__ == '__main__':
-    states = pd.read_csv("wikipedia_ISO_3166-2_US.csv")
-
-    all_states = [
-        time_series_recovered(row['Wikipedia_Name'], name=row['Name'],
-            iso_code=row['Iso_3166_2'], limit=500)
-        for index, row in states.iloc[:].iterrows()
-    ]
-
-    pd.concat(all_states).to_csv('time_servies_recovered_wikipedia.csv')
