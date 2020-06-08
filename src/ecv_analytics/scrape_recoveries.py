@@ -51,12 +51,12 @@ def extract_recovered_from_html(text, url=None):
     table = tables[0]
     table.columns = ['name', 'value']
     try:
-        value = int(table.set_index('name').loc['Recovered'].value)
+        value = table.set_index('name').loc['Recovered'].value
     except KeyError:
         # print('Recovered not found for ' + url)
         # print(table)
         return None
-    return value
+    return int(value.split()[0])
 
 
 def time_series_recovered(wiki_name, name=None, iso_code=None, limit=5):
