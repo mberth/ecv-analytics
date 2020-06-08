@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup
 WIKIPEDIA = 'https://en.wikipedia.org'
 COVID_PANDEMIC_URL = '%s/w/index.php?title=COVID-19_pandemic_in_{}' % WIKIPEDIA
 
-states = pd.read_csv("wikipedia_ISO_3166-2_US.csv")
-
 
 def extract_history(parsed):
     """Return a links and timestmps for a history page."""
@@ -44,7 +42,8 @@ def extract_recovered(url):
         # Some older versions
         return None
     tables = pd.read_html(page.text, attrs={'class': 'infobox'})
-    assert len(tables) == 1, "There should be only one Infobox."
+    if len(tables) != 1:
+        print(f"Warning: taking the first infobox at {url}.")
     table = tables[0]
     table.columns = ['name', 'value']
     try:
@@ -76,11 +75,13 @@ def time_series_recovered(wiki_name, name=None, iso_code=None, limit=5):
     versions.rename(columns={'href': 'Source'})
     return versions
 
+if __name__ == '__main__':
+    states = pd.read_csv("wikipedia_ISO_3166-2_US.csv")
 
-all_states = [
-    time_series_recovered(row['Wikipedia_Name'], name=row['Name'],
-        iso_code=row['Iso_3166_2'], limit=500)
-    for index, row in states.iloc[:].iterrows()
-]
+    all_states = [
+        time_series_recovered(row['Wikipedia_Name'], name=row['Name'],
+            iso_code=row['Iso_3166_2'], limit=500)
+        for index, row in states.iloc[:].iterrows()
+    ]
 
-pd.concat(all_states).to_csv('time_servies_recovered_wikipedia.csv')
+    pd.concat(all_states).to_csv('time_servies_recovered_wikipedia.csv')
