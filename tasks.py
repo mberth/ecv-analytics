@@ -15,7 +15,7 @@ def reset_dir():
 def copy_index(c):
     """Copy the top-level index file to the site."""
     site = BUILD_DIR / 'site'
-    shutil.copy("source/index.html", site)
+    shutil.copy("site/index.html", site)
 
 @task(post=[copy_index])
 def copy_us_counties(c):
@@ -35,7 +35,7 @@ def copy_us_counties(c):
         'counties5.json', 'states5.json', ]
     for file in files:
         shutil.copy(repo / file, site)
-    shutil.copy("source/us-counties/index.html", site)
+    shutil.copy("site/us-counties/index.html", site)
 
 
 @task(post=[copy_us_counties])
