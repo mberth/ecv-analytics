@@ -15,8 +15,9 @@ def extract_history(parsed):
     answer = []
     for entry in history:
         link = entry.find("a", class_="mw-changeslist-date")
-        ts = pd.to_datetime(link.text, dayfirst=True)
-        answer.append({'href': link["href"], 'timestamp': ts})
+        if link:
+            ts = pd.to_datetime(link.text, dayfirst=True)
+            answer.append({'href': link["href"], 'timestamp': ts})
     return answer
 
 
@@ -73,6 +74,7 @@ def time_series_recovered(wiki_name, name=None, iso_code=None, limit=5):
     print(f"Fetching {wiki_name}")
     url = COVID_PANDEMIC_URL.format(
         wiki_name) + f'&limit={limit}&action=history'
+    print("Analyzing page history at {}".format(url))
     page = requests.get(url)
     if page.status_code != 200:
         print(f"Bad HTTP status for {url}")
