@@ -15,6 +15,7 @@ invoke = "*"
 beautifulsoup4 = "*"
 lxml = "*"
 openpyxl = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
