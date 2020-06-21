@@ -1,0 +1,58 @@
+Iso_3166_2,Name,Category,Wikipedia_Name,Labels_obuchel
+US-AL,Alabama,state,Alabama,mixed_29
+US-AK,Alaska,state,Alaska,mixed_25
+US-AZ,Arizona,state,Arizona,mixed_21
+US-AR,Arkansas,state,Arkansas,mixed_62
+US-CA,California,state,California,mixed_22
+US-CO,Colorado,state,Colorado,mixed_52
+US-CT,Connecticut,state,Connecticut,mixed_39
+US-DE,Delaware,state,Delaware,mixed_37
+US-FL,Florida,state,Florida,mixed_30
+US-GA,Georgia,state,Georgia_(U.S._state),67
+US-HI,Hawaii,state,Hawaii,mixed_47
+US-ID,Idaho,state,Idaho,mixed_6
+US-IL,Illinois,state,Illinois,mixed_60
+US-IN,Indiana,state,Indiana,mixed_65
+US-IA,Iowa,state,Iowa,mixed_57
+US-KS,Kansas,state,Kansas,mixed_55
+US-KY,Kentucky,state,Kentucky,mixed_61
+US-LA,Louisiana,state,Louisiana,mixed_27
+US-ME,Maine,state,Maine,mixed_13
+US-MD,Maryland,state,Maryland,mixed_36
+US-MA,Massachusetts,state,Massachusetts,mixed_41
+US-MI,Michigan,state,Michigan,mixed_12
+US-MN,Minnesota,state,Minnesota,mixed_2
+US-MS,Mississippi,state,Mississippi,mixed_28
+US-MO,Missouri,state,Missouri,mixed_58
+US-MT,Montana,state,Montana,mixed_7
+US-NE,Nebraska,state,Nebraska,mixed_54
+US-NV,Nevada,state,Nevada,mixed_51
+US-NH,New Hampshire,state,New_Hampshire,mixed_17
+US-NJ,New Jersey,state,New_Jersey,mixed_38
+US-NM,New Mexico,state,New_Mexico,mixed_23
+US-NY,New York,state,New_York_(state),mixed_18
+US-NC,North Carolina,state,North_Carolina,mixed_33
+US-ND,North Dakota,state,North_Dakota,mixed_10
+US-OH,Ohio,state,Ohio,mixed_16
+US-OK,Oklahoma,state,Oklahoma,mixed_56
+US-OR,Oregon,state,Oregon,mixed_42
+US-PA,Pennsylvania,state,Pennsylvania,mixed_20
+US-RI,Rhode Island,state,Rhode_Island,mixed_40
+US-SC,South Carolina,state,South_Carolina,mixed_32
+US-SD,South Dakota,state,South_Dakota,mixed_53
+US-TN,Tennessee,state,Tennessee,mixed_63
+US-TX,Texas,state,Texas,mixed_24
+US-UT,Utah,state,Utah,mixed_49
+US-VT,Vermont,state,Vermont,mixed_19
+US-VA,Virginia,state,Virginia,mixed_34
+US-WA,Washington,state,Washington_(state),mixed_4
+US-WV,West Virginia,state,West_Virginia,mixed_64
+US-WI,Wisconsin,state,Wisconsin,mixed_59
+US-WY,Wyoming,state,Wyoming,mixed_50
+US-DC,District of Columbia,district,"Washington,_D.C.",mixed_35
+US-AS,American Samoa,outlying area,American_Samoa,
+US-GU,Guam,outlying area,Guam,72
+US-MP,Northern Mariana Islands,outlying area,the_Northern_Mariana_Islands,
+US-PR,Puerto Rico,outlying area,Puerto_Rico,173
+US-UM,United States Minor Outlying Islands,outlying area,,
+US-VI,"Virgin Islands, U.S.",outlying area,the_United_States_Virgin_Islands,216
