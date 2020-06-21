@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Automated country classification
+# Author: Derrick Van Gennep, New England Complex Systems Institute
 
 # This file is meant to take in JHU data for countries, then produce simple plots for the ECV website
 
@@ -76,7 +77,7 @@ winning = 0
 nearly_there = 0 
 needs_action = 0
 
-for j, country in enumerate(confirm.iloc[-1].sort_values(ascending=False).index[:3]):
+for j, country in enumerate(confirm.iloc[-1].sort_values(ascending=False).index[:]):
 
     #if you want to choose one single country, use this. If not, comment it out
     """
