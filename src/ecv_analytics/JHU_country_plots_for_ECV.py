@@ -7,11 +7,15 @@
 
 # In[26]:
 
-
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+FIGURES_PATH = Path(r'build/site/countries/figures')
+"""Where the charts are saved."""
+
+FIGURES_PATH.mkdir(parents=True, exist_ok=True)
 
 # ## Get data from GitHub
 
@@ -184,16 +188,12 @@ for j, country in enumerate(confirm.iloc[-1].sort_values(ascending=False).index[
     plt.tight_layout()
     ax.tick_params(axis='x', pad=10)
     ax.xaxis.set_major_locator(plt.MaxNLocator(9))
-    plt.savefig(r'figures\countries\testing/%s.png'% (country+date), dpi=300, bbox_inches='tight', pad_inches=1)
-    plt.show()
+    (FIGURES_PATH / color).mkdir(parents=True, exist_ok=True)
+    plt.savefig(FIGURES_PATH / color / ('%s.png' % (country + date)), dpi=300, bbox_inches='tight', pad_inches=1)
+    # plt.show()
 print('winning = ' + str(winning))
 print('nearly there = ' + str(nearly_there))
 print('needs action = ' + str(needs_action))
 print('not listed: ' + str(len(do_not_include)))
-
-
-# In[ ]:
-
-
 
 
