@@ -1,0 +1,32 @@
+name: Make Countries Charts
+
+on:
+  # Run every day at 5:23am, UTC. Automated updates come in at 04:50 UTC, see
+  # https://github.com/CSSEGISandData/COVID-19/commits/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+  schedule:
+    - cron: '23 5 * * *'
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        # Semantic version range syntax or exact version of a Python version
+        python-version: '3.x'
+        # Optional - x64 or x86 architecture, defaults to x64
+        # architecture: 'x64'
+    - name: Install dependencies
+      run: python -m pip install --upgrade pip setuptools wheel pandas matplotlib
+    - name: Create charts
+      run: python script/JHU_country_plots_for_ECV.py
+    - name: Make zip file
+      run: zip -r countries build/site/countries
+    - name: Upload zip file
+      uses: actions/upload-artifact@v1
+      with:
+        name: countries
+        path: countries.zip
