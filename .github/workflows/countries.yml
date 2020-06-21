@@ -19,4 +19,9 @@ jobs:
     - name: Create charts
       run: python src/ecv_analytics/JHU_country_plots_for_ECV.py
     - name: Make zip file
-      run: zip build/site/countries
+      run: zip -r countries build/site/countries
+    - name: Upload zip file
+      uses: actions/upload-artifact@v1
+      with:
+        name: countries
+        path: countries.zip
