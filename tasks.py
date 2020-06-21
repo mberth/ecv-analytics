@@ -1,4 +1,6 @@
 import sys
+import urllib
+
 if 'src' not in sys.path:
     # https://stackoverflow.com/questions/10095037/why-use-sys-path-appendpath-instead-of-sys-path-insert1-path
     sys.path.insert(1, "src")
@@ -134,3 +136,25 @@ def review_scraped_recoveries(c, csvdir=None):
         file.write(heatmap.render().replace('>-1</td>', '></td>'))
     heatmap.to_excel(location / 'heatmap.xlsx')
 
+
+def download_file(url, file_name):
+    # Download the file from `url` and save it locally under `file_name`:
+    with urllib.request.urlopen(url) as response, open(file_name,
+            'wb') as out_file:
+        shutil.copyfileobj(response, out_file)
+
+
+@task
+def download_viz_csv(c):
+    """Download time_series_19-covid-*.csv to build/scrape/ec2viz."""
+    reset_dir()
+    base_url = "http://ec2-35-153-102-199.compute-1.amazonaws.com/viz/"
+    outdir = BUILD_DIR / 'scraping/ec2viz'
+    outdir.mkdir(parents=True, exist_ok=True)
+    files = [
+        "time_series_19-covid-Confirmed.csv",
+        "time_series_19-covid-Recovered.csv",
+        "time_series_19-covid-Deaths.csv"]
+    for file in files:
+        download_file(base_url + file,
+                      outdir / file)
