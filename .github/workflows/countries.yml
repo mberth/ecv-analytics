@@ -3,9 +3,11 @@ name: Make Countries Charts
 on:
   # Run every day at 5:23am, UTC. Automated updates come in at 04:50 UTC, see
   # https://github.com/CSSEGISandData/COVID-19/commits/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
-  - schedule:
+  schedule:
     23 5 * * *
-  - push
+  push:
+    branches:
+      - master
 
 jobs:
   build:
