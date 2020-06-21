@@ -76,7 +76,7 @@ winning = 0
 nearly_there = 0 
 needs_action = 0
 
-for j, country in enumerate(confirm.iloc[-1].sort_values(ascending=False).index[:]):
+for j, country in enumerate(confirm.iloc[-1].sort_values(ascending=False).index[:3]):
 
     #if you want to choose one single country, use this. If not, comment it out
     """
